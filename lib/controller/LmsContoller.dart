@@ -114,13 +114,13 @@ Future<PostsModel> getPost(String id) async {
   }
 }
 
-Future<dynamic> addPost(String address, int area, String descrition, int postType, int price, int rooms, String title) async {
+Future<dynamic> addPost(String address, int area, String descrition, int postType, int price, int rooms, String title, int roomNumber) async {
   try {
     final response = await http.post(
       Uri.parse('$apiUrl/api/posts'),
       headers: {
         'Authorization': 'Bearer $accessToken',
-        'Content-Type': 'application/json', // Add this line
+        'Content-Type': 'application/json',
       },
       body: jsonEncode(<String, dynamic>{
         "address": address,
@@ -161,6 +161,7 @@ Future<dynamic> addPost(String address, int area, String descrition, int postTyp
         ],
         "postType": postType,
         "price": price,
+        "roomNumber": roomNumber,
         "rooms": rooms,
         "title": title
       }),

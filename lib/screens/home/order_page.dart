@@ -3,7 +3,9 @@ import 'package:diploma/global/app_colors.dart';
 import 'package:diploma/global/app_sizes.dart';
 import 'package:diploma/global/button.dart';
 import 'package:diploma/global/custom_bar.dart';
+import 'package:diploma/global/shared_repo.dart';
 import 'package:diploma/models/posts_model.dart';
+import 'package:diploma/screens/home/organization/terms_screen.dart';
 import 'package:diploma/screens/home/total_payment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -24,35 +26,36 @@ class OrderPage extends StatefulWidget {
 }
 
 class _OrderPageState extends State<OrderPage> {
-  late PostsModel posts;
+  // late PostsModel posts;
+  bool isChecked = false;
 
   @override
   void initState() {
     super.initState();
     // _controller = CalendarController();
-    fetchPosts();
+    // fetchPosts();
   }
 
-  Future<void> fetchPosts() async {
-    final data = await getPost(widget.id);
-    // if (data.where((post) => post.postTypes.contains("POST_APARTMENT"))) {
-    //   setState(() {
-    //     posts = data;
-    //   });
-    // } else if (data.where((post) => post.postTypes.contains("POST_PLACE"))) {
-    //   setState(() {
-    //     businessRoom = data;
-    //   });
-    // }
-    // final filteredPosts = data.where((post) => post.postTypes.contains("POST_APARTMENT") || post.postTypes.contains("POST_PLACE"));
-    setState(() {
-      posts = data;
-    });
-  }
+  // Future<void> fetchPosts() async {
+  //   final data = await getPost(widget.id);
+  //   // if (data.where((post) => post.postTypes.contains("POST_APARTMENT"))) {
+  //   //   setState(() {
+  //   //     posts = data;
+  //   //   });
+  //   // } else if (data.where((post) => post.postTypes.contains("POST_PLACE"))) {
+  //   //   setState(() {
+  //   //     businessRoom = data;
+  //   //   });
+  //   // }
+  //   // final filteredPosts = data.where((post) => post.postTypes.contains("POST_APARTMENT") || post.postTypes.contains("POST_PLACE"));
+  //   setState(() {
+  //     posts = data;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
-    print('~id ${posts.toString()}');
+    // print('~id ${posts.toString()}');
     return Scaffold(
         appBar: CustomAppBar(
           title: "Захиалгын хураангуй",
@@ -79,16 +82,14 @@ class _OrderPageState extends State<OrderPage> {
           ),
         ),
         body: Container(
-          margin: const EdgeInsets.all(25),
+          margin: const EdgeInsets.all(15),
           child: Expanded(
             child: Row(
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 15),
                     Container(
-                      margin: const EdgeInsets.only(left: 10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -296,9 +297,13 @@ class _OrderPageState extends State<OrderPage> {
                               ),
                             ],
                           ),
+
                           // Order Button
                         ],
                       ),
+                    ),
+                    SizedBox(
+                      height: 260,
                     ),
                   ],
                 ),

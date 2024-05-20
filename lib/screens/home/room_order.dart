@@ -1,6 +1,7 @@
 import 'package:diploma/global/app_colors.dart';
 import 'package:diploma/global/custom_bar.dart';
 import 'package:diploma/screens/home/order_page.dart';
+import 'package:diploma/screens/home/organization/terms_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -30,6 +31,7 @@ class _RoomOrderState extends State<RoomOrder> {
 
   @override
   Widget build(BuildContext context) {
+    print('price ${widget.price}');
     return Scaffold(
       appBar: CustomAppBar(
         title: "Захиалга өгөх",
@@ -179,11 +181,25 @@ class _RoomOrderState extends State<RoomOrder> {
                     ),
                     child: ElevatedButton(
                       onPressed: () {
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     // builder: (context) => BookingPage(id: widget.id),
+                        //     builder: (context) => OrderPage(
+                        //         id: widget.id,
+                        //         title: widget.title,
+                        //         price: widget.price,
+                        //         area: widget.area,
+                        //         rooms: widget.rooms,
+                        //         address: widget.address),
+                        //   ),
+                        // );
+
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             // builder: (context) => BookingPage(id: widget.id),
-                            builder: (context) => OrderPage(
+                            builder: (context) => TermsScreen(
                                 id: widget.id,
                                 title: widget.title,
                                 price: widget.price,

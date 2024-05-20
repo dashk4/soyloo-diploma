@@ -22,6 +22,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
   final TextEditingController _priceController = TextEditingController();
   final TextEditingController _roomsController = TextEditingController();
   final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _roomNumberController = TextEditingController();
   final GlobalKey _buttonKey = GlobalKey();
   bool _isLoading = false;
 
@@ -66,7 +67,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
           onPressed: () async {
             if (formKey.currentState!.validate()) {
               setState(() {
-                _isLoading = true; // Set loading state to true
+                _isLoading = true;
               });
               String address = _adressController.text;
               int area = int.parse(_areaController.text);
@@ -75,14 +76,10 @@ class _AddPostScreenState extends State<AddPostScreen> {
               int price = int.parse(_priceController.text);
               int rooms = int.parse(_roomsController.text);
               String title = _titleController.text;
-
-              // userModel.user!.lastname = _lastnameController.text;
-              // userModel.user!.memberCount = int.parse(_memberCountController.text);
-              // userModel.user!.address = _addressController.text;
-              // userModel.user!.registration = "${AppValues.alphabet[_first]}${AppValues.alphabet[_second]}${_registrationController.text}";
-              await addPost(address, area, descrition, postType, price, rooms, title);
+              int roomNumber = int.parse(_roomNumberController.text);
+              await addPost(address, area, descrition, postType, price, rooms, title, roomNumber);
               setState(() {
-                _isLoading = false; // Set loading state to false after operation
+                _isLoading = false;
               });
             }
           },
@@ -119,6 +116,13 @@ class _AddPostScreenState extends State<AddPostScreen> {
                       onValidate: (text) => InputValidations.numberValidation(text),
                     ),
                     const SizedBox(height: AppSizes.betweenSize),
+                    Input(
+                      controller: _roomNumberController,
+                      label: "Өрөөний дугаар",
+                      hint: "Өрөөний дугаар",
+                      inputType: TextInputType.number,
+                      onValidate: (text) => InputValidations.numberValidation(text),
+                    ),
                     const SizedBox(height: AppSizes.betweenSize),
                     Input(
                       controller: _areaController,
@@ -205,7 +209,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
     _priceController.dispose();
     _roomsController.dispose();
     _titleController.dispose();
-
+    _roomNumberController.dispose();
     super.dispose();
   }
 }

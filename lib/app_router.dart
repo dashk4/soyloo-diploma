@@ -1,6 +1,7 @@
 import 'package:diploma/boaring_screen.dart';
 import 'package:diploma/screens/auth/login_screen.dart';
 import 'package:diploma/screens/auth/signup_screen.dart';
+import 'package:diploma/screens/home/organization/terms_screen.dart';
 import 'package:diploma/screens/home/profile_page.dart';
 import 'package:diploma/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +67,7 @@ class AppRouter {
       //   return MaterialPageRoute(
       //     builder: (_) => const ContactWebScreen(),
       //   );
-      // case '/profile/terms':
+      // case '/terms':
       //   return MaterialPageRoute(builder: (_) => const TermsScreen());
 
       // case '/payment':
